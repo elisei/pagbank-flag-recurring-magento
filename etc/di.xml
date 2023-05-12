@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * O2TI Flag Recurring Module.
+ *
+ * Copyright © 2023 O2TI. All rights reserved.
+ *
+ * @author    Bruno Elisei <brunoelisei@o2ti.com>
+ * @license   See LICENSE for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Add Flag to Assing Data -->
+    <type name="PagBank\PaymentMagento\Observer\DataAssignCcObserver">
+        <plugin name="pagbank_flagrecurring_cc_data_assign_plugin" type="O2TI\FlagRecurringMagento\Observer\DataAssignCcObserverPlugin" sortOrder="10" />
+    </type>
+
+    <!-- Cc Add Flag Recurring to Request -->
+    <virtualType name="PagBankCcAuthorizationRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="flag_recurring" xsi:type="string">O2TI\FlagRecurringMagento\Gateway\Request\CreditCard\RecurringDataRequest</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Vault Add Flag Recurring to Request -->
+    <virtualType name="PagBankCcVaultRequest" type="Magento\Payment\Gateway\Request\BuilderComposite">
+        <arguments>
+            <argument name="builders" xsi:type="array">
+                <item name="flag_recurring" xsi:type="string">O2TI\FlagRecurringMagento\Gateway\Request\CreditCard\RecurringDataRequest</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Add New Config Provider for Type Recurring -->
+    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+        <arguments>
+            <argument name="configProviders" xsi:type="array">
+                <item name="pagbank_flag_recurring_config_provider" xsi:type="object">O2TI\FlagRecurringMagento\Model\FlagRecurringConfigProvider</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

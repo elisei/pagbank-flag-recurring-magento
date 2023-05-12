@@ -4,7 +4,7 @@ Essa é uma extensão do módulo pagbank/payment-magento para adiconar uma flag 
 
 Essa extensão **não faz o motor de recorrência**, ela apenas implementa a ação necessária para a PagBank identificar o pagamento como recorrente.
 
-Sua lógica de definição para o fluxo de pagamento é via configuração administrativa, implementada no arquivo [Model/FlagRecurringConfigProvider.php](../../Model/FlagRecurringConfigProvider.php) em caso de uso em produção recomendamos alterar a lógica para captura dessa informação possivelmente baseada nos produtos do carrinho.
+Sua lógica de definição para o fluxo de pagamento é via configuração administrativa, implementada no arquivo [Model/FlagRecurringConfigProvider.php](../../blob/main/Model/FlagRecurringConfigProvider.php) em caso de uso em produção recomendamos alterar a lógica para captura dessa informação possivelmente baseada nos produtos do carrinho.
 
 ## Resalvas e Advertências de Uso
 
@@ -16,7 +16,7 @@ Em caso de dúvidas e problemas com a extensão acionar o time da PagBank/O2TI a
 
 Recomendos a instalação manual, uma vez que em produção você possivelmente precisará alterar a lógica de definição da flag de recorrência.
 
-## Orientação para a constração de um motor de recorrência
+## Orientação para a construção de um motor de recorrência
 
 Para novos ciclos de pagamento para recorrência você deverá realizar o pagamento utilizando o vault salvo no processo inicial e alterar a flag para 'SUBSEQUENT'.
 

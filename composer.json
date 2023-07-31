@@ -17,6 +17,14 @@
         "OSL-3.0",
         "AFL-3.0"
     ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "O2TI\\FlagRecurringMagento\\": ""
+        }
+    },
     "require-dev": {
         "magento/magento-coding-standard": "*",
         "phpmd/phpmd": "^2.13",
